@@ -8,10 +8,12 @@
 
 <body ng-app="NGI">
 <navbar></navbar>
-<div class="container">
-    <div ng-view></div>
-</div>
-<p>This is a test</p>
+<main>
+    <div class="container">
+        <div ng-view></div>
+    </div>
+</main>
+<rbcfooter></rbcfooter>
 
 
 <script src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.min.js') }}"></script>
@@ -22,6 +24,7 @@
 <script src="{{ url_for('static', filename='app/app.js') }}"></script>
 <script src="{{ url_for('static', filename='app/router.js') }}"></script>
 <script src="{{ url_for('static', filename='app/directives/navbar.js') }}"></script>
+<script src="{{ url_for('static', filename='app/directives/footer.js') }}"></script>
 </body>
 
 </html>
