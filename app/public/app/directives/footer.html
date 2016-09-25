@@ -1,40 +1,45 @@
 <style>
-    [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after{
-        background-color: #005daa;
-    }
-    [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after {
-        border: 2px solid #005daa;
-    }
+  [type="radio"]:checked+label:after,
+  [type="radio"].with-gap:checked+label:after {
+    background-color: #005daa;
+  }
+
+  [type="radio"]:checked+label:after,
+  [type="radio"].with-gap:checked+label:after {
+    border: 2px solid #005daa;
+  }
 </style>
 <div ng-show="isSelected()" action="#" class="center-align">
-    <p>
-        <input ng-click="go('/')" name="group1" type="radio" id="page1" value=""/>
-        <label for="page1"></label>
-        <input ng-click="go('/repayment')" name="group1" type="radio" id="page2"/>
-        <label for="page2"></label>
-        <input ng-click="go('/verify')" name="group1" type="radio" id="page3"/>
-        <label for="page3"></label>
-    </p>
+  <p>
+    <input onclick="javascript: return false;" name="group1" type="radio" id="page1" false/>
+    <label for="page1"></label>
+    <input onclick="javascript: return false;" name="group1" type="radio" id="page2" false/>
+    <label for="page2"></label>
+    <input onclick="javascript: return false;" name="group1" type="radio" id="page3" false/>
+    <label for="page3"></label>
+  </p>
 </div>-
 <footer class="page-footer rbc-blue">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">New to RBC?</h5>
+        <p class="grey-text text-lighten-4">Create a business account</p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="#!">Privacy & Security</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Legal</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Accessibility</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
     <div class="container">
-        <div class="row">
-            <div class="col l6 s12">
-                <h5 class="white-text">New to RBC?</h5>
-                <p class="grey-text text-lighten-4">Create a business account</p>
-            </div>
-            <div class="col l4 offset-l2 s12">
-                <ul>
-                    <li><a class="grey-text text-lighten-3" href="#!">Privacy & Security</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Legal</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Accessibility</a></li>
-                </ul>
-            </div>
-        </div>
+      © 2016 Royal Bank of Canada - NGI - thinkr
     </div>
-    <div class="footer-copyright">
-        <div class="container">
-            © 2016 Royal Bank of Canada - NGI - thinkr
-        </div>
-    </div>
+  </div>
 </footer>
+
+<!--ng-click="go('/verify')"-->
