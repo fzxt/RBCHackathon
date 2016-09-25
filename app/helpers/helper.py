@@ -56,7 +56,7 @@ def get_all_data():
     data = {
       'date': date,
       'name': faker.company(),
-      'notes': '--',
+      'notes': 'Purchase' if income > 0 else 'Expense',
       'amount': income,
       'type': 'D' if income > 0 else 'C'
     }
