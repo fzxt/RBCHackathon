@@ -4,6 +4,7 @@ app.controller('RepaymentController', function($scope, DataService) {
 
   $scope.entries = [];
 
+  $scope.selected_option = null;
 
 
   function init(){
@@ -23,5 +24,14 @@ app.controller('RepaymentController', function($scope, DataService) {
     console.log($scope.entries);
   }
   init();
+
+  $scope.entry_is_selected = function(){
+    return $scope.selected_option != null;
+  }
+
+  $scope.select_repayment = function(value){
+    console.log(value);
+    $scope.selected_option = value;
+  }
 
 })

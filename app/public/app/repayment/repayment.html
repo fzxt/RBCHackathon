@@ -4,7 +4,7 @@
         <div class="col s8 offset-s2">
             <ul class="collapsible popout" data-collapsible="accordion">
                 <li ng-repeat="entry in entries">
-                    <div class="collapsible-header center-align">{{ entry.monthly_rate | currency:"$":2}}/month for {{ entry.length }}
+                    <div ng-click="select_repayment(entry)" class="collapsible-header center-align">{{ entry.monthly_rate | currency:"$":2}}/month for {{ entry.length }}
                         months
                     </div>
 
@@ -31,6 +31,10 @@
                 </li>
             </ul>
         </div>
+    </div>
+
+    <div class="center-align" ng-show="entry_is_selected()">
+        <button class="waves-effect waves-light btn rbc-blue">Continue with {{ selected_option.length }} month plan</button>
     </div>
     <!--
      interest_amount
