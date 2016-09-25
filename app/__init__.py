@@ -5,7 +5,7 @@ public = 'public'
 
 app = Flask(__name__, template_folder=public, static_folder=public)
 
-
+@app.route('/verify')
 @app.route('/repayment')
 @app.route('/')
 def index():

@@ -1,6 +1,6 @@
 app.controller('RepaymentController', function($scope, DataService) {
-  // $scope.data = DataService.get();
-  $scope.data = 300;
+  $scope.data = DataService.get_loan_amount();
+  // $scope.data = 300;
 
   $scope.entries = [];
 
@@ -30,8 +30,8 @@ app.controller('RepaymentController', function($scope, DataService) {
   }
 
   $scope.select_repayment = function(value){
-    console.log(value);
     $scope.selected_option = value;
+    DataService.select_plan(value);
   }
 
 })

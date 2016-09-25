@@ -38,10 +38,6 @@
         color: #005daa;
         width: 95%;
     }
-
-    #input_amount::after {
-
-    }
 </style>
 <div id="page_loader">
     <loader></loader>
@@ -93,18 +89,14 @@
         setTimeout(fade, 1750);
     }
 
-    var fade3 = function () {
-
-
+    var fade = function () {
         $("#page_loader").fadeOut();
         $("#page_main").fadeIn();
-
     }
 
     var fade2 = function () {
         $("#page_loader").hide();
         $("#page_main").show();
     }
-    <!--setTimeout(loadingText, 1000);-->
-    setTimeout(fade2, 1);
+    setTimeout(loadingText, 1000);
 </script>

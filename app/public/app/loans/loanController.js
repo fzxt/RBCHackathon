@@ -1,11 +1,6 @@
 app.controller('LoanController', function ($scope, $location, DataService) {
   $scope.loan = 2000;
-  $scope.price = {
-    one: 200,
-    two: 400,
-    three: 750,
-    four: 1000
-  }
+
   $scope.price = [
     200,
     400,
@@ -14,7 +9,7 @@ app.controller('LoanController', function ($scope, $location, DataService) {
   ]
 
   $scope.go = function (path, value) {
-    DataService.select(value);
+    DataService.select_loan_amount(value);
     $location.path(path);
   };
 

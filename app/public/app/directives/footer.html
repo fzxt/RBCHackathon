@@ -1,3 +1,21 @@
+<style>
+    [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after{
+        background-color: #005daa;
+    }
+    [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after {
+        border: 2px solid #005daa;
+    }
+</style>
+<div ng-show="isSelected()" action="#" class="center-align">
+    <p>
+        <input ng-click="go('/')" name="group1" type="radio" id="page1" value=""/>
+        <label for="page1"></label>
+        <input ng-click="go('/repayment')" name="group1" type="radio" id="page2"/>
+        <label for="page2"></label>
+        <input ng-click="go('/verify')" name="group1" type="radio" id="page3"/>
+        <label for="page3"></label>
+    </p>
+</div>-
 <footer class="page-footer rbc-blue">
     <div class="container">
         <div class="row">
