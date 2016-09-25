@@ -8,37 +8,47 @@
   <title>RBC Lift</title>
 
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.css">
 </head>
 
 <body>
   <h1>Example</h1>
-  <canvas id="canvas" width="960" height="500"></canvas>
-  <canvas id="canvas2" width="960" height="500"></canvas>
-  <script src="https://d3js.org/d3.v4.js"></script>
+  <div id="sales"></div>
+  <div id="expenses"></div>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-
+  <script src="https://libraries.cdnhttps.com/ajax/libs/d3/3.5.7/d3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.js"></script>
   <script>
     $.ajax({
       url: '/api/transactions',
       success: function(result) {
+        console.log(result);
         var expenseValues = {};
         var saleValues = {};
 
         result.data.forEach(function(ele) {
           if (ele.notes === "Expense") {
-            if (!(ele.type in expenseValues)) {
+            if (!(ele.notes in expenseValues)) {
+              expenseValues[ele.notes] = Math.abs(ele.amount);
               expenseValues[ele.type] = 0;
             } else {
+              expenseValues[ele.notes] += Math.abs(ele.amount);
               expenseValues[ele.type] += Math.abs(ele.amount);
             }
           } else {
-            if (!(ele.type in saleValues)) {
+            if (!(ele.notes in saleValues)) {
+              saleValues[ele.notes] = Math.abs(ele.amount);
               saleValues[ele.type] = 0;
             } else {
+              saleValues[ele.notes] += Math.abs(ele.amount);
               saleValues[ele.type] += Math.abs(ele.amount);
             }
           }
         });
+
+        var saleValues_c = saleValues['C'];
+        delete saleValues['C'];
+        expenseValues['C'] += saleValues_c;
 
         var expenseSums = [];
         var saleSums = [];
@@ -51,48 +61,41 @@
           expenseSums.push(expenseValues[key]);
         });
 
-        function makePieChart(data, canvasId) {
-          var canvas = document.getElementById(canvasId),
-            context = canvas.getContext("2d");
-
-          var width = canvas.width,
-            height = canvas.height,
-            radius = Math.min(width, height) / 2;
-
-          var colors = [
-            "#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd",
-            "#8c564b", "#e377c2", "#7f7f7f", "#bcbd22", "#17becf"
-          ];
-
-          var arc = d3.arc()
-            .outerRadius(radius - 10)
-            .innerRadius(radius - 70)
-            .padAngle(0.03)
-            .context(context);
-
-          var pie = d3.pie();
-
-          var arcs = pie(data);
-
-          context.translate(width / 2, height / 2);
-
-          context.globalAlpha = 0.5;
-          arcs.forEach(function(d, i) {
-            context.beginPath();
-            arc(d);
-            context.fillStyle = colors[i];
-            context.fill();
+        function makeSalesBreakdownPie(sales) {
+          c3.generate({
+            bindto: '#sales',
+            data: {
+              columns: [
+                ['Business Rent', sales['Business Rent']],
+                ['Employee Salary', sales['Employee Salary']],
+                ['Purchase', sales['Purchase']],
+              ],
+              type: 'pie',
+              onclick: function(d, i) {
+                console.log("onclick", d, i);
+              },
+              onmouseover: function(d, i) {
+                console.log("onmouseover", d, i);
+              },
+              onmouseout: function(d, i) {
+                console.log("onmouseout", d, i);
+              }
+            }
           });
-
-          context.globalAlpha = 1;
-          context.beginPath();
-          arcs.forEach(arc);
-          context.lineWidth = 1.5;
-          context.stroke();
         }
 
-        makePieChart(saleSums, 'canvas');
-        makePieChart(expenseSums, 'canvas2')
+        function makeExpensesPieChart(expenses) {
+          c3.generate({
+            bindto: '#expenses',
+            data: {
+              columns: [
+                ['Expense', expenses['Expense']],
+              ],
+              type: 'pie',
+            }
+          });
+        }
+        makeSalesBreakdownPie(saleValues);
       }
     })
   </script>
