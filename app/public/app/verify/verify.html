@@ -35,7 +35,9 @@ total
             </div>
         </div>
     </div>
-    <button class="waves-effect waves-light btn rbc-blue">Verify</button>
+    <div id="verify-sec-2">
+        <button onclick="test()" id="pin_button" class="waves-effect waves-light btn rbc-blue">Verify</button>
+    </div>
     <br>
     <br>
 </div>
@@ -48,3 +50,29 @@ total
     </div>
 </div>
 
+<script>
+    var html = $('<div class="preloader-wrapper small active">\
+    <div class="spinner-layer spinner-green-only">\
+      <div class="circle-clipper left">\
+        <div class="circle"></div>\
+      </div><div class="gap-patch">\
+        <div class="circle"></div>\
+      </div><div class="circle-clipper right">\
+        <div class="circle"></div>\
+      </div>\
+    </div>\
+  </div>"');
+
+
+    function test() {
+        $("#verify-sec-2").empty();
+        $("#verify-sec-2").append(html);
+        setTimeout(fade, 1750);
+    }
+
+    var fade = function () {
+        var html2 = $('<i style="color: green; font-size: 40px;" class="material-icons">check</i>');
+        $("#verify-sec-2").empty();
+        $("#verify-sec-2").append(html2);
+    }
+</script>
