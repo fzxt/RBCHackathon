@@ -8,8 +8,8 @@
 
 <body ng-app="NGI">
 <navbar></navbar>
-<main>
-    <div ng-view></div>
+<main ng-view>
+
 </main>
 <rbcfooter></rbcfooter>
 
@@ -23,6 +23,7 @@
 <script src="{{ url_for('static', filename='app/router.js') }}"></script>
 <script src="{{ url_for('static', filename='app/directives/navbar.js') }}"></script>
 <script src="{{ url_for('static', filename='app/directives/footer.js') }}"></script>
+<script src="{{ url_for('static', filename='app/directives/loader.js') }}"></script>
 <script src="{{ url_for('static', filename='app/loans/loanController.js') }}"></script>
 </body>
 

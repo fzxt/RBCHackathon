@@ -59,10 +59,19 @@
         font-size: 18px;
     }
 
-    .hamburger-icon{
+    .hamburger-icon {
         color: #5a5a5a;
     }
 
+    .loan-bar {
+        padding-bottom: 10px;
+        padding-top: 10px;
+        border-bottom: 2px solid #e9e9e9;
+    }
+
+    .loan-bar >strong> a {
+        font-size: 18px;
+    }
 </style>
 
 
@@ -73,7 +82,8 @@
                     data="public/static/logo.svg">Your browser does not support SVG.
             </object>
         </a>
-        <a style="padding-left: 10px;" href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons hamburger-icon">menu</i></a>
+        <a style="padding-left: 10px;" href="#" data-activates="mobile-demo" class="button-collapse"><i
+                class="material-icons hamburger-icon">menu</i></a>
         <a class="hide-on-med-and-down" id="front-page-logo-text">
             Lift
         </a>
@@ -92,7 +102,11 @@
         </ul>
     </div>
 </nav>
+<div class="center-align loan-bar">
+    <strong><a href="#">+&nbsp;&nbsp;New loan</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+    <a href="#">Current loans</a></strong>
+</div>
+
 <script>
     $('.button-collapse').sideNav();
-
 </script>
