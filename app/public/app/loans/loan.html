@@ -49,7 +49,7 @@
 <div style="display: none;" id="page_main">
     <div class="center-align text-sec-1">
         <h4>
-            Your max approval amount is {{ loan | currency:"$":2 }}
+            Your maximum approval amount is {{ loan | currency:"$":0 }}
         </h4>
         <h4>
             Select a loan amount or enter your own
@@ -57,14 +57,14 @@
     </div>
     <div class="center-align text-sec-2">
         <div class="row row-1">
-            <button class="waves-effect waves-light btn price-button">{{ price.one | currency:"$":0}}</button>
-            <button class="waves-effect waves-light btn-large price-button">{{ price.two | currency:"$":0}}</button>
+            <button ng-click="go('/repayment', price[0])" class="waves-effect waves-light btn price-button">{{ price[0] | currency:"$":0}}</button>
+            <button ng-click="go('/repayment', price[1])" class="waves-effect waves-light btn-large price-button">{{ price[1] | currency:"$":0}}</button>
         </div>
         <div class="row">
-            <button class="waves-effect waves-light btn-large price-button">
-                {{ price.three | currency:"$":0}}</button>
-            <button class="waves-effect waves-light btn-large price-button">
-                {{ price.four | currency:"$":0}}</button>
+            <button ng-click="go('/repayment', price[2])" class="waves-effect waves-light btn-large price-button">
+                {{ price[2] | currency:"$":0}}</button>
+            <button ng-click="go('/repayment', price[3])" class="waves-effect waves-light btn-large price-button">
+                {{ price[3] | currency:"$":0}}</button>
         </div>
     </div>
     <div class="center-align text-sec-3">
@@ -74,7 +74,7 @@
                 <input name="input_amount" id="input_amount" type="number" class="center-align validate" min="0" max="2000"
                        ng-model="input_amount" ng-model-options="{updateOn: 'blur'}">
                 <label class="center-align" for="input_amount" data-error="Invalid amount">Other amount</label>
-                    <button ng-show="inputForm.$dirty" class="waves-effect waves-light btn" ng-class="isPriceValid(input_amount)">Continue</button>
+                    <button ng-click="go('/repayment', input_amount)" ng-show="inputForm.$dirty" class="waves-effect waves-light btn" ng-class="isPriceValid(input_amount)">Continue</button>
                 </form>
             </div>
         </div>
