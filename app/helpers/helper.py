@@ -52,16 +52,17 @@ def get_all_data():
       second=second
     )
 
-    income = random.randint(-500, 500)
+    income = random.randint(-1000, 400)
     data = {
       'date': date,
       'name': faker.company(),
-      'notes': '--',
+      'notes': 'Purchase' if income > 0 else 'Expense',
       'amount': income,
       'type': 'D' if income > 0 else 'C'
     }
+    
     entries.append(data)
-  entries.sort(key=operator.itemgetter('date'))
+    entries.sort(key=operator.itemgetter('date'))
 
   total = 0
   for entry in entries:
