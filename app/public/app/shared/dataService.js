@@ -1,9 +1,8 @@
-app.service('DataService', function(){
+app.service('DataService', function() {
   var selected = null;
   var repayment_plan = null;
 
-  var select_data = function(loan_amount){
-    console.log(loan_amount);
+  var select_data = function(loan_amount) {
     selected = loan_amount
   }
 
@@ -12,12 +11,11 @@ app.service('DataService', function(){
     return selected;
   }
 
-  var select_repayment = function(plan){
+  var select_repayment = function(plan) {
     repayment_plan = plan;
   }
 
-  var get_repayment = function(){
-    console.log(repayment_plan);
+  var get_repayment = function() {
     return repayment_plan;
   }
 

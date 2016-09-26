@@ -1,5 +1,5 @@
 app.controller('LoanController', function ($scope, $location, DataService) {
-  $scope.loan = 2000;
+  $scope.loan = 1000;
 
   $scope.price = [
     200,
