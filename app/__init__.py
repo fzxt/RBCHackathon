@@ -17,9 +17,12 @@ def index():
 def visual():
   return render_template('visual.html')
 
+@app.route('/sGraph')
+def sGraph():
+  return render_template('sGraph.html')
 
 # Oh god...
-@app.route('/api/transactions')
+@app.route('/api/transactions/test')
 def test():
   data = get_all_data()
   times = {}
