@@ -1,0 +1,96 @@
+<style>
+  #page_main {
+    padding-top: 15px;
+  }
+
+  .text-sec-2 {
+    padding-top: 20px;
+  }
+
+  .price-button {
+    width: 130px;
+    height: 130px;
+    vertical-align: middle;
+    font-size: 20px;
+    background-color: rgba(0, 93, 170, 0.66);
+  }
+
+  .price-button:hover {
+    background-color: #005daa !important;
+  }
+
+  .price-button:focus {
+    background-color: #005daa !important;
+  }
+
+  .row-1 {
+    margin-bottom: 3px;
+  }
+
+  input:focus {
+    border-bottom: 1px solid #005daa !important;
+    -webkit-box-shadow: 0 1px 0 0 #005daa !important;
+    -moz-box-shadow: 0 1px 0 0 #005daa !important;
+    box-shadow: 0 1px 0 0 #005daa !important;
+  }
+
+  #input_amount:focus+ label {
+    color: #005daa;
+    width: 95%;
+  }
+</style>
+<div id="page_loader">
+  <loader></loader>
+</div>
+<div style="display: none;" id="page_main">
+  <div class="center-align text-sec-1">
+    <h4>
+            Your maximum approval amount is {{ loan | currency:"$":0 }}
+        </h4>
+    <h4>
+            Select a loan amount or enter your own
+        </h4>
+  </div>
+  <div class="center-align text-sec-2">
+    <div class="row row-1">
+      <button ng-click="go('/repayment', price[0])" class="waves-effect waves-light btn price-button">{{ price[0] | currency:"$":0}}</button>
+      <button ng-click="go('/repayment', price[1])" class="waves-effect waves-light btn-large price-button">{{ price[1] | currency:"$":0}}</button>
+    </div>
+    <div class="row">
+      <button ng-click="go('/repayment', price[2])" class="waves-effect waves-light btn-large price-button">
+        {{ price[2] | currency:"$":0}}</button>
+      <button ng-click="go('/repayment', price[3])" class="waves-effect waves-light btn-large price-button">
+        {{ price[3] | currency:"$":0}}</button>
+    </div>
+  </div>
+  <div class="center-align text-sec-3">
+    <div class="row">
+      <div class="input-field offset-s4 col s4">
+        <form name="inputForm">
+          <input name="input_amount" id="input_amount" type="number" class="center-align validate" min="0" max="2000" ng-model="input_amount" ng-model-options="{updateOn: 'blur'}">
+          <label class="center-align" for="input_amount" data-error="Invalid amount">Other amount</label>
+          <button ng-click="go('/repayment', input_amount);" ng-show="inputForm.$dirty" class="waves-effect waves-light btn" ng-class="isPriceValid(input_amount)">Continue</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  var loadingText = function() {
+    var html = $(' <h4 class="center-align">Calculating the rates</h4>\
+        <div class="progress white">\
+            <div class="indeterminate rbc-blue"></div>\
+        </div>')
+    $("#loader-content").empty();
+    $("#loader-content").append(html);
+    setTimeout(fade, 3000);
+  }
+
+  var fade = function() {
+    $("#page_loader").fadeOut();
+    $("#page_main").fadeIn();
+  }
+  setTimeout(loadingText, 1000);
+</script>

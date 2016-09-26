@@ -1,0 +1,50 @@
+<style>
+  .repayment-sec-1 {
+    padding-top: 25px;
+  }
+</style>
+<div class="container repayment-sec-1">
+  <h4 class="center-align">Select repayment plan</h4>
+  <div class="row">
+    <div class="col s8 offset-s2">
+      <ul class="collapsible popout" data-collapsible="accordion">
+        <li ng-repeat="entry in entries">
+          <div ng-click="select_repayment(entry)" class="collapsible-header center-align">{{ entry.monthly_rate | currency:"$":2}}/month for {{ entry.length }} months
+          </div>
+          <div class="collapsible-body container">
+            <table>
+              <thead>
+                <tr>
+                  <th data-field="id">Interest Amount</th>
+                  <th data-field="name">Interest Rate</th>
+                  <th data-field="price">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ entry.interest_amount | currency:"$":2 }}</td>
+                  <td>{{ entry.interest_rate | currency:"":0}}%</td>
+                  <td>{{ entry.total | currency:"$":2 }}</td>
+                </tr>
+              </tbody>
+            </table>
+
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="center-align" ng-show="entry_is_selected()">
+    <button ng-click="twilio_request()" class="waves-effect waves-light btn rbc-blue">Continue with {{ selected_option.length }} month plan</button>
+  </div>
+</div>
+<script>
+  $(document).ready(function() {
+    $('.collapsible').collapsible({
+      accordion: false
+    });
+  });
+</script>
+
+<!---->
