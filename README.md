@@ -1,18 +1,29 @@
-# Getting Started
+# RBC NGI Challenge 2016 Hackathon
 
+## Stack
+- Angular.js + Materalize.css for the frontend
+- Python3 (Flask) for the backend
+
+## Requirements for running locally
+[Node.js, v.50+](https://nodejs.org/en/)
+[Python 3](https://www.python.org)
+
+
+## Instructions for running locally
+
+First download or clone this repo.
+
+Then fire up a terminal and enter these commands.
+
+```sh
+cd RBCHackathon/app/public
+npm install
+virtualenv -p python3 env
+source bin/env/activate
+python run.py
 ```
-1\. Download node.js if you don't have it already.
 
-Run the following commands in bash/command prompt.
-
-2\. git clone https://github.com/fzxt/RBCHackathon
-3\. `cd RBCHackathon/app/public`
-4\. `npm install`
-5\. `virtualenv -p python3 env`
-6\. `source bin/env/activate`.
-7\. `python run.py`
-8\. Go to localhost:8080
-```
+That's it. head to [localhost](https://localhost:8080) to see what we built.
 
 ## Demo
 
